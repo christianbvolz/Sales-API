@@ -13,8 +13,7 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('customers')
         .onDelete('CASCADE')
-      table.string('ddd').notNullable()
-      table.string('phone_number').notNullable()
+      table.string('phone_number').notNullable().unique()
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

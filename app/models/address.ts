@@ -7,10 +7,10 @@ export default class Address extends BaseModel {
   @belongsTo(() => Customer)
   declare customer: BelongsTo<typeof Customer>
 
-  @column({ isPrimary: true })
+  @column({ serializeAs: null, isPrimary: true })
   declare id: number
 
-  @column()
+  @column({ serializeAs: null })
   declare customerId: number
 
   @column()
@@ -20,7 +20,7 @@ export default class Address extends BaseModel {
   declare street: string
 
   @column()
-  declare streetNumber: string
+  declare streetNumber: number
 
   @column()
   declare neighborhood: string
@@ -31,9 +31,9 @@ export default class Address extends BaseModel {
   @column()
   declare state: string
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ serializeAs: null, autoCreate: true })
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ serializeAs: null, autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 }

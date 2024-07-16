@@ -7,21 +7,18 @@ export default class PhoneNumber extends BaseModel {
   @belongsTo(() => Customer)
   declare customer: BelongsTo<typeof Customer>
 
-  @column({ isPrimary: true })
+  @column({ serializeAs: null, isPrimary: true })
   declare id: number
 
-  @column()
+  @column({ serializeAs: null })
   declare customerId: number
-
-  @column()
-  declare ddd: string
 
   @column()
   declare phoneNumber: string
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ serializeAs: null, autoCreate: true })
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ serializeAs: null, autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 }

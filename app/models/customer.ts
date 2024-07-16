@@ -15,7 +15,7 @@ export default class Customer extends BaseModel {
   @manyToMany(() => Product)
   declare products: ManyToMany<typeof Product>
 
-  @column({ isPrimary: true })
+  @column({ serializeAs: null, isPrimary: true })
   declare id: number
 
   @column()
@@ -24,9 +24,9 @@ export default class Customer extends BaseModel {
   @column()
   declare cpf: string
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ serializeAs: null, autoCreate: true })
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ serializeAs: null, autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 }

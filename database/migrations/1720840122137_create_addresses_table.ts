@@ -15,7 +15,7 @@ export default class extends BaseSchema {
         .onDelete('CASCADE')
       table.string('cep').notNullable()
       table.string('street').notNullable()
-      table.string('street_number').notNullable()
+      table.integer('street_number').notNullable()
       table.string('neighborhood').notNullable()
       table.string('city').notNullable()
       table.string('state').notNullable()

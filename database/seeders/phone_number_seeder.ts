@@ -6,13 +6,11 @@ export default class extends BaseSeeder {
     await PhoneNumber.createMany([
       {
         customerId: 1,
-        ddd: '11',
-        phoneNumber: '94324-2453',
+        phoneNumber: '(11) 94324-2453',
       },
       {
         customerId: 2,
-        ddd: '21',
-        phoneNumber: '91038-9067',
+        phoneNumber: '(53) 91038-9067',
       },
     ])
   }
