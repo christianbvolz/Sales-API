@@ -7,27 +7,24 @@
 |
 */
 import router from '@adonisjs/core/services/router'
-import { middleware } from './kernel.js'
-import User from '#models/user'
+// import { middleware } from './kernel.js'
 
 const UsersController = () => import('#controllers/users_controller')
 
-// router.get('/', [UsersController, 'index']).prefix('/api')
-// router.get('/:id', [UsersController, 'show']).prefix('/api')
-// router.post('/', [UsersController, 'create']).prefix('/api')
-
 router
-  .post('login', async ({ request, auth }) => {
-    const { email, password } = request.all()
-    const user = await User.verifyCredentials(email, password)
-    const x = await auth.use('jwt').generate(user)
-    return { x, auth }
-  })
-  .use(middleware.auth())
-  .prefix('/api')
-
-router
-  .get('/', async ({ auth }) => {
-    return auth
+  .group(() => {
+    router.group(() => {
+      router.post('/signup', [UsersController, 'signUp'])
+      router.post('/login', [UsersController, 'login'])
+    })
+    // router
+    //   .group(() => {
+    //     router.get('/', [CustomersController, 'index'])
+    //     router.get('/:customerId', [CustomersController, 'show'])
+    //     router.post('/', [CustomersController, 'store'])
+    //     router.put('/', [CustomersController, 'update'])
+    //   })
+    //   .prefix('customers')
+    //   .use(middleware.auth())
   })
   .prefix('/api')
