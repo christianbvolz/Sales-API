@@ -6,6 +6,15 @@ import Address from './address.js'
 import Product from './product.js'
 
 export default class Customer extends BaseModel {
+  @hasOne(() => PhoneNumber)
+  declare phoneNumber: HasOne<typeof PhoneNumber>
+
+  @hasOne(() => Address)
+  declare address: HasOne<typeof Address>
+
+  @manyToMany(() => Product)
+  declare products: ManyToMany<typeof Product>
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -20,13 +29,4 @@ export default class Customer extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-
-  @hasOne(() => PhoneNumber)
-  declare phoneNumber: HasOne<typeof PhoneNumber>
-
-  @hasOne(() => Address)
-  declare adress: HasOne<typeof Address>
-
-  @manyToMany(() => Product)
-  declare products: ManyToMany<typeof Product>
 }

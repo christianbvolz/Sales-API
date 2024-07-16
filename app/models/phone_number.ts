@@ -4,6 +4,9 @@ import Customer from './customer.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class PhoneNumber extends BaseModel {
+  @belongsTo(() => Customer)
+  declare customer: BelongsTo<typeof Customer>
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -21,7 +24,4 @@ export default class PhoneNumber extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-
-  @belongsTo(() => Customer)
-  declare customer: BelongsTo<typeof Customer>
 }

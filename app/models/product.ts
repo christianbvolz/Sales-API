@@ -4,6 +4,9 @@ import Customer from './customer.js'
 import type { ManyToMany } from '@adonisjs/lucid/types/relations'
 
 export default class Product extends BaseModel {
+  @manyToMany(() => Customer)
+  declare customers: ManyToMany<typeof Customer>
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -27,7 +30,4 @@ export default class Product extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
-
-  @manyToMany(() => Customer)
-  declare customers: ManyToMany<typeof Customer>
 }
