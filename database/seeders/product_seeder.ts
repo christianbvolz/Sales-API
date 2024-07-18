@@ -20,6 +20,23 @@ export default class extends BaseSeeder {
         quantity: 156,
         image: '',
       },
+      {
+        title: 'Mouse Gamer Razer Deathadder Essential 6400dpi Cor Preto',
+        description:
+          'O MOUSE ESSENCIAL PARA JOGOS\nA linha Razer DeathAdder é reconhecida pela sua confiabilidade, durabilidade e ergonomia. O Razer DeathAdder Essential eleva essas qualidades, tornando-se uma escolha acessível.\n\nFORMATO ERGONÔMICO\nO design ergonômico do Razer DeathAdder Essential é mantido, assegurando conforto para longas sessões de jogo.\n\n5 Botões De Hiper-Resposta\nBotões Hyperesponse programáveis proporcionam controles avançados.\n\nAté 10 Milhões De Cliques\nOs interruptores mecânicos Razer ™ são duráveis e confiáveis.\n\nSensor óptico de 6.400 DPI\nPermite movimentos rápidos e precisos, oferecendo controle nas partidas.\n\nESPECIFICAÇÕES TÉCNICAS:\nFATOR DE FORMA: Destro\nCONECTIVIDADE: Com fio - cabo padrão\nILUMINAÇÃO: Iluminação verde de uma cor\nSENSOR: Ótico\nSENSIBILIDADE MÁXIMA (DPI): 6400\nVELOCIDADE MÁXIMA (IPS): 220\nACELERAÇÃO MÁXIMA (G): 30\nBOTÕES PROGRAMÁVEIS: 5\nTIPO DE MUDANÇA: Mecânico\nMUDAR O CICLO DE VIDA: 10 milhões de cliques\nPÉS DE RATO: Pés de estoque padrão\nCABO: Comprimento do cabo: 2,1 m / 6,89 pés\nTILT SCROLL WHEEL: Não\nTAMANHOS: Comprimento: 127,0 mm / 5 pol. / Largura do punho: 61,7 mm / 2,43 pol. / Altura: 42,7 mm / 1,68 pol.\nPESO: 96 g\nCOMPATIBILIDADE DE DOCK: Nenhum\n',
+        price: 165.99,
+        quantity: 78,
+        image: '',
+      },
+      {
+        title:
+          'Teclado Satechi W3 Slim Retroiluminado Com Fio USB-C USB-C ST-UCSW3M QWERTY Inglês US Cor Cinza Escuro',
+        description:
+          'Complete o seu espaço de mesa moderno, enquanto trabalha remotamente ou em casa, com o teclado retroiluminado com fio Satechi Slim W3. Projetado para dispositivos Mac, o teclado W3 apresenta um layout estendido com teclado numérico e teclas de atalho convenientes otimizadas para Mac e iOS – tudo com um design moderno e ultrafino. Equipado com teclas retroiluminadas ajustáveis e uma conexão USB-C com fio, o teclado permite que você trabalhe com facilidade onde e quando sua criatividade o levar.\n\nCompatibilidade de dispositivos\n\nMacBook Pro\n\nMacBook Pro M3 (14")\nMacBook Pro M3 Pro (14" e 16")\nMacBook Pro M3 Máx. (14" e 16")\nMacBook Pro (13 polegadas, M2, 2022)\nMacBook Pro (13 polegadas, M1, 2020)\nMacBook Pro (13 polegadas, 2020)\nMacBook Pro (13 polegadas, 2016 - 2019)\nMacBook Pro (14 polegadas, 2023)\nMacBook Pro (14 polegadas, 2021)\nMacBook Pro (16 polegadas, 2023)\nMacBook Pro (16 polegadas, 2021)\nMacBook Pro (16 polegadas, 2019)\nMacBook Pro (15 polegadas, 2016 - 2019)\n\nMacBook Air\n\nMacBook Air (15 polegadas, M2, 2023)\nMacBook Air (13 polegadas, M2, 2022)\nMacBook Air (M1, 2020)\nMacBook Air (Retina, 13 polegadas, 2020)\nMacBook Air (Retina, 13 polegadas, 2018 - 2019)\n\nExibição de estúdio\n\nExibição de estúdio (2022)\n\nTela profissional\n\nTela Pro XDR (2019)\n\niMac\n\niMac M3 (2023)\niMac (24 polegadas, M1, 2021)\niMac (Retina 4K, 21,5 polegadas, 2017)\niMac (Retina 5K, 27 polegadas, 2019–2020)\niMac (Retina 5K, 27 polegadas, 2017)\niMac Pro (2017)\n\nMacMini\n\nMac mini (2023)\nMac mini (M1, 2020)\nMac mini (2018)\n\nEstúdio Mac\n\nEstúdio Mac (2023)\nEstúdio Mac (2022)\n\nMac Pro\n\nMac Pro (2023)\n\niPad Pro\n\niPad Pro de 12,9 polegadas (6ª geração)\niPad Pro de 12,9 polegadas (5ª geração)\niPad Pro de 12,9 polegadas (4ª geração)\niPad Pro de 12,9 polegadas (3ª geração)\niPad Pro de 12,9 polegadas (2ª geração)\niPad Pro de 12,9 polegadas (1ª geração)\niPad Pro de 11 polegadas (4ª geração)\niPad Pro de 11 polegadas (3ª geração)\niPad Pro de 11 polegadas (2ª geração)\niPad Pro de 11 polegadas (1ª geração)\n\niPad Air\n\niPad Air (5ª geração)\niPad Air (4ª geração)\n\niPad\n\niPad (10ª geração)\n\niPad Mini\n\niPad mini (6ª geração)\n\nImportante: não oferece suporte a dispositivos com porta USB-A padrão e precisa de um adaptador para conectividade.\n\nEspecificações técnicas\n\nO que está na caixa\n\nTeclado retroiluminado com fio Slim W3, 2 risers de borracha e manual do usuário\n\nTipo de conector\n\nUSB-C com fio\n\nDimensões e Peso\n\n42,29 x 11,43 x 1 centímetro, 440 gramas\n\nModelo#/UPC\n\nST-UCSW3M/879961009083\n',
+        price: 529.99,
+        quantity: 25,
+        image: '',
+      },
     ])
   }
 }

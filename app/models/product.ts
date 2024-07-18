@@ -20,7 +20,7 @@ export default class Product extends BaseModel {
   @column()
   declare title: string
 
-  @column()
+  @column({ serializeAs: null })
   declare description: string
 
   @column()
@@ -29,7 +29,7 @@ export default class Product extends BaseModel {
   @column()
   declare quantity: number
 
-  @column()
+  @column({ serializeAs: null })
   declare image: string
 
   @column.dateTime({ serializeAs: null, autoCreate: true })

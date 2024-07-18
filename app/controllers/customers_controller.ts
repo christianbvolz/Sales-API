@@ -15,7 +15,7 @@ export default class CustomersController {
   async index({ response }: HttpContext) {
     const customers = await Customer.query().preload('address').preload('phoneNumber')
 
-    return response.status(StatusCodes.CREATED).json(customers)
+    return response.ok(customers)
   }
 
   async filterByMonthOrYear(
@@ -77,7 +77,7 @@ export default class CustomersController {
         .status(StatusCodes.CONFLICT)
         .json({ errors: [{ message: 'Customer does not exist' }] })
 
-    return response.ok({ customer })
+    return response.ok(customer)
   }
 
   async store({ request, response }: HttpContext) {
