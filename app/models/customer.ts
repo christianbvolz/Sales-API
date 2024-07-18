@@ -1,9 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne, manyToMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany, hasOne, manyToMany } from '@adonisjs/lucid/orm'
 import PhoneNumber from './phone_number.js'
-import type { HasOne, ManyToMany } from '@adonisjs/lucid/types/relations'
+import type { HasMany, HasOne, ManyToMany } from '@adonisjs/lucid/types/relations'
 import Address from './address.js'
 import Product from './product.js'
+import Sale from './sale.js'
 
 export default class Customer extends BaseModel {
   @hasOne(() => PhoneNumber)
@@ -12,7 +13,13 @@ export default class Customer extends BaseModel {
   @hasOne(() => Address)
   declare address: HasOne<typeof Address>
 
-  @manyToMany(() => Product)
+  @hasMany(() => Sale)
+  declare sales: HasMany<typeof Sale>
+
+  @manyToMany(() => Product, {
+    pivotTable: 'sales',
+    pivotTimestamps: true,
+  })
   declare products: ManyToMany<typeof Product>
 
   @column({ serializeAs: null, isPrimary: true })

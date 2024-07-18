@@ -24,6 +24,7 @@ router
         router.get('/:customerId', [CustomersController, 'show'])
         router.post('/', [CustomersController, 'store'])
         router.put('/:customerId', [CustomersController, 'update'])
+        router.delete('/:customerId', [CustomersController, 'delete'])
       })
       .prefix('customers')
       .use(middleware.auth())

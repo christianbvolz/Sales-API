@@ -19,6 +19,13 @@ export default class extends BaseSeeder {
         totalPrice: 11999.85,
       },
       {
+        customerId: 1,
+        productId: 2,
+        quantity: 1,
+        unitPrice: 3999.95,
+        totalPrice: 3999.95,
+      },
+      {
         customerId: 2,
         productId: 2,
         quantity: 1,

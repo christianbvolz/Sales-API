@@ -1,11 +1,18 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
 import Customer from './customer.js'
-import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
+import Sale from './sale.js'
 
 export default class Product extends BaseModel {
-  @manyToMany(() => Customer)
-  declare customers: ManyToMany<typeof Customer>
+  @hasMany(() => Sale)
+  declare sales: HasMany<typeof Sale>
+
+  @manyToMany(() => Customer, {
+    pivotTable: 'sales',
+    pivotTimestamps: true,
+  })
+  declare customer: ManyToMany<typeof Customer>
 
   @column({ isPrimary: true })
   declare id: number
@@ -25,9 +32,9 @@ export default class Product extends BaseModel {
   @column()
   declare image: string
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ serializeAs: null, autoCreate: true })
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ serializeAs: null, autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 }
