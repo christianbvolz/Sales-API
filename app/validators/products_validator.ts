@@ -36,5 +36,6 @@ export const updateProductValidator = vine.compile(
         extnames: ['jpg', 'png', 'jpeg', 'svg'],
       })
       .optional(),
+    deletedAt: vine.date().nullable().optional(),
   })
 )

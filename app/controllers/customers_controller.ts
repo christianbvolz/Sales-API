@@ -27,36 +27,54 @@ export default class CustomersController {
     if (month && year) {
       ;[customer] = await Customer.query()
         .where('id', customerId)
+        .preload('phoneNumber')
+        .preload('address')
         .preload('sales', (salesQuery) => {
           salesQuery
             .whereRaw('MONTH(`sales`.`created_at`) = ?', [month])
             .whereRaw('YEAR(`sales`.`created_at`) = ?', [year])
-            .preload('products')
+            .preload('products', (productsQuery) => {
+              productsQuery.withTrashed()
+            })
             .orderBy('created_at', 'desc')
         })
     } else if (month) {
       ;[customer] = await Customer.query()
         .where('id', customerId)
+        .preload('phoneNumber')
+        .preload('address')
         .preload('sales', (salesQuery) => {
           salesQuery
             .whereRaw('MONTH(`sales`.`created_at`) = ?', [month])
-            .preload('products')
+            .preload('products', (productsQuery) => {
+              productsQuery.withTrashed()
+            })
             .orderBy('created_at', 'desc')
         })
     } else if (year) {
       ;[customer] = await Customer.query()
         .where('id', customerId)
+        .preload('phoneNumber')
+        .preload('address')
         .preload('sales', (salesQuery) => {
           salesQuery
             .whereRaw('YEAR(`sales`.`created_at`) = ?', [year])
-            .preload('products')
+            .preload('products', (productsQuery) => {
+              productsQuery.withTrashed()
+            })
             .orderBy('created_at', 'desc')
         })
     } else {
       ;[customer] = await Customer.query()
         .where('id', customerId)
+        .preload('phoneNumber')
+        .preload('address')
         .preload('sales', (salesQuery) => {
-          salesQuery.preload('products').orderBy('created_at', 'desc')
+          salesQuery
+            .preload('products', (productsQuery) => {
+              productsQuery.withTrashed()
+            })
+            .orderBy('created_at', 'desc')
         })
     }
 

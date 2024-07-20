@@ -3,8 +3,10 @@ import { BaseModel, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
 import Customer from './customer.js'
 import type { HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 import Sale from './sale.js'
+import { compose } from '@adonisjs/core/helpers'
+import { SoftDeletes } from 'adonis-lucid-soft-deletes'
 
-export default class Product extends BaseModel {
+export default class Product extends compose(BaseModel, SoftDeletes) {
   @hasMany(() => Sale)
   declare sales: HasMany<typeof Sale>
 
@@ -37,4 +39,6 @@ export default class Product extends BaseModel {
 
   @column.dateTime({ serializeAs: null, autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+  @column.dateTime({ serializeAs: null })
+  declare deletedAt: DateTime | null
 }

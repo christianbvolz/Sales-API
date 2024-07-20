@@ -87,9 +87,10 @@ export default class ProductsController {
       price,
       quantity,
       image,
+      deletedAt,
     } = await request.validateUsing(updateProductValidator)
 
-    const product = await Product.find(productId)
+    const product = await Product.withTrashed().where('id', productId).firstOrFail()
 
     if (!product)
       return response
@@ -101,7 +102,7 @@ export default class ProductsController {
     try {
       product.useTransaction(trx)
 
-      await product.merge({ title, description, price, quantity }).save()
+      await product.merge({ title, description, price, quantity, deletedAt }).save()
 
       if (image) {
         await image.move(app.makePath('public/images'), {
@@ -128,25 +129,8 @@ export default class ProductsController {
         .status(StatusCodes.NOT_FOUND)
         .json({ errors: [{ message: 'Product not found' }] })
 
-    const trx = await db.transaction()
+    await product.delete()
 
-    try {
-      product.useTransaction(trx)
-
-      await product.delete()
-
-      fs.unlink(`./public/images/${product.image}`, (err) => {
-        if (err) {
-          console.error(err)
-        } else {
-          console.log('File is deleted.')
-        }
-      })
-
-      await trx.commit()
-    } catch (error) {
-      await trx.rollback()
-    }
     return response.ok(product)
   }
 }
