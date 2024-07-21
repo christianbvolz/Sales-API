@@ -35,7 +35,14 @@ export default class ProductsController {
         .status(StatusCodes.NOT_FOUND)
         .json({ errors: [{ message: 'Product not found' }] })
 
-    return response.ok(product?.$original)
+    return response.ok({
+      id: productId,
+      title: product.title,
+      description: product.description,
+      price: product.id,
+      quantity: product.quantity,
+      image: product.image,
+    })
   }
 
   async store({ request, response }: HttpContext) {
@@ -76,7 +83,7 @@ export default class ProductsController {
         }
       })
     }
-    return response.status(StatusCodes.CREATED).json(product)
+    return response.status(StatusCodes.CREATED).json({ productId: product.id })
   }
 
   async update({ request, response }: HttpContext) {
@@ -106,15 +113,17 @@ export default class ProductsController {
 
       if (image) {
         await image.move(app.makePath('public/images'), {
-          name: product.image,
+          name: product.$original.image,
         })
       }
 
       await trx.commit()
     } catch (error) {
       await trx.rollback()
+      return response.internalServerError()
     }
-    return response.ok(product)
+
+    return response.ok({ message: 'Product updated' })
   }
 
   async delete({ request, response }: HttpContext) {
@@ -131,6 +140,6 @@ export default class ProductsController {
 
     await product.delete()
 
-    return response.ok(product)
+    return response.ok({ message: 'Product deleted' })
   }
 }

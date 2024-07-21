@@ -35,7 +35,7 @@ export default class SalesController {
 
     const unitPrice = product.price
     const totalPrice = unitPrice * quantity
-
+    let sale: Sale
     try {
       product.useTransaction(trx)
 
@@ -43,7 +43,10 @@ export default class SalesController {
 
       if (newProductQuantity === 0) await product.delete()
 
-      await Sale.create({ customerId, productId, quantity, unitPrice, totalPrice }, { client: trx })
+      sale = await Sale.create(
+        { customerId, productId, quantity, unitPrice, totalPrice },
+        { client: trx }
+      )
 
       await trx.commit()
     } catch (error) {
@@ -51,6 +54,6 @@ export default class SalesController {
       return response.internalServerError()
     }
 
-    return response.created()
+    return response.created(sale)
   }
 }
