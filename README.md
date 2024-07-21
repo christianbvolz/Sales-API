@@ -1,4 +1,4 @@
-# descrição
+# Descrição
 
 Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um sistema que permite cadastrar usuários externos. Usuários logados poderão registrar clientes, produtos e vendas.
 
