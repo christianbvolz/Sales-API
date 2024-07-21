@@ -2,6 +2,16 @@
 
 Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um sistema que permite cadastrar usuários externos. Usuários logados poderão registrar clientes, produtos e vendas.
 
+# Sumário
+
+* [Pré-requisitos](#pré-requisitos)
+* [Instalação](#instalação)
+* [Postman para testar os endpoint](#postman-para-testar-os-endpoint)
+* [Users API Endpoints](#users-api-endpoints)
+* [Customers API Endpoints](#customers-api-endpoints)
+* [Products API Endpoints](#products-api-endpoints)
+* [Sales API Endpoints](#sales-api-endpoints)
+
 # Pré-requisitos
 
 - Node.js
@@ -605,3 +615,4 @@ Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um si
   }
   ```
   </details>
+  
