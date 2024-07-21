@@ -10,7 +10,7 @@ Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um si
 
 # Instalação
 
-1. Clone o repositório
+1. Clone o repositório:
 
 - `git clone git@github.com:christianbvolz/Sales-API.git`.
 - Entre na pasta do repositório que você acabou de clonar:
@@ -43,7 +43,7 @@ Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um si
 
 <br />
 
-4. Apliqe as migrations e seeds:
+4. Aplique as migrations e seeds:
    - `npm run migration`
    
 5. Inicie a aplicação:
@@ -55,7 +55,7 @@ Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um si
   [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/33803535-11fc4bd7-a0e0-4988-9e17-a6e64184f9d9?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D33803535-11fc4bd7-a0e0-4988-9e17-a6e64184f9d9%26entityType%3Dcollection%26workspaceId%3D9745ea69-63ac-4434-9b67-07f8e68f8161)
   <br />
   
-  É preciso instalar o Postman Agent para a requisição funcionar pel browser. https://www.postman.com/downloads/postman-agent/
+  É preciso instalar o Postman Agent para a requisição funcionar pelo browser. https://www.postman.com/downloads/postman-agent/
 
 # Users API Endpoints
 
