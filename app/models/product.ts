@@ -31,7 +31,7 @@ export default class Product extends compose(BaseModel, SoftDeletes) {
   @column()
   declare quantity: number
 
-  @column({ serializeAs: null })
+  @column()
   declare image: string
 
   @column.dateTime({ serializeAs: null, autoCreate: true })

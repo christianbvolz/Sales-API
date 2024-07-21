@@ -116,15 +116,16 @@ export default class CustomersController {
         .status(StatusCodes.CONFLICT)
         .json({ errors: [{ message: 'PhoneNumber already exists' }] })
 
-    await db.transaction(async (trx) => {
-      const customer = await Customer.create({ fullName, cpf }, { client: trx })
+    const customer = await db.transaction(async (trx) => {
+      const newCustomer = await Customer.create({ fullName, cpf }, { client: trx })
 
-      await customer.related('phoneNumber').create({ phoneNumber })
+      await newCustomer.related('phoneNumber').create({ phoneNumber })
 
-      await customer.related('address').create(address)
+      await newCustomer.related('address').create(address)
+      return newCustomer
     })
 
-    return response.created()
+    return response.created({ customerId: customer.id })
   }
 
   async update({ request, response }: HttpContext) {
@@ -169,7 +170,7 @@ export default class CustomersController {
       await trx.rollback()
     }
 
-    return response.ok(customer)
+    return response.ok({ message: 'Customer updated' })
   }
 
   async delete({ request, response }: HttpContext) {
