@@ -21,8 +21,8 @@ export default class extends BaseSchema {
         .inTable('products')
         .onDelete('CASCADE')
       table.integer('quantity').notNullable()
-      table.float('unit_price').notNullable()
-      table.float('total_price').notNullable()
+      table.decimal('unit_price').notNullable()
+      table.decimal('total_price').notNullable()
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
