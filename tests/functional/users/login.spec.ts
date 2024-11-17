@@ -1,24 +1,20 @@
 import User from '#models/user'
-import testUtils from '@adonisjs/core/services/test_utils'
 import { test } from '@japa/runner'
 import { StatusCodes } from 'http-status-codes'
-
-const user = {
-  firstName: 'name',
-  lastName: 'last',
-  email: 'test@adonisjs.com',
-  password: 'superpassword',
-}
+import { user, newUser } from '../data.js'
+import db from '@adonisjs/lucid/services/db'
 
 const baseUrl = '/api/login'
 
 const tokenRegex = /^[\w-]+\.[\w-]+\.[\w-]+$/
 
 test.group('Users login', async (group) => {
-  group.each.setup(() => testUtils.db().truncate())
+  group.each.setup(async () => {
+    await db.from('users').delete()
+  })
 
   test('should login user', async ({ client, assert }) => {
-    await User.create(user)
+    await User.create(newUser)
     const response = await client.post(baseUrl).json(user)
 
     const userDb = await User.findBy('email', user.email)
