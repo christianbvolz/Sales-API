@@ -18,69 +18,6 @@ export default class CustomersController {
     return response.ok(customers)
   }
 
-  async filterByMonthOrYear(
-    customerId: number,
-    month: number | undefined,
-    year: number | undefined
-  ): Promise<Customer> {
-    let customer: Customer
-    if (month && year) {
-      ;[customer] = await Customer.query()
-        .where('id', customerId)
-        .preload('phoneNumber')
-        .preload('address')
-        .preload('sales', (salesQuery) => {
-          salesQuery
-            .whereRaw('MONTH(`sales`.`created_at`) = ?', [month])
-            .whereRaw('YEAR(`sales`.`created_at`) = ?', [year])
-            .preload('products', (productsQuery) => {
-              productsQuery.withTrashed()
-            })
-            .orderBy('created_at', 'desc')
-        })
-    } else if (month) {
-      ;[customer] = await Customer.query()
-        .where('id', customerId)
-        .preload('phoneNumber')
-        .preload('address')
-        .preload('sales', (salesQuery) => {
-          salesQuery
-            .whereRaw('MONTH(`sales`.`created_at`) = ?', [month])
-            .preload('products', (productsQuery) => {
-              productsQuery.withTrashed()
-            })
-            .orderBy('created_at', 'desc')
-        })
-    } else if (year) {
-      ;[customer] = await Customer.query()
-        .where('id', customerId)
-        .preload('phoneNumber')
-        .preload('address')
-        .preload('sales', (salesQuery) => {
-          salesQuery
-            .whereRaw('YEAR(`sales`.`created_at`) = ?', [year])
-            .preload('products', (productsQuery) => {
-              productsQuery.withTrashed()
-            })
-            .orderBy('created_at', 'desc')
-        })
-    } else {
-      ;[customer] = await Customer.query()
-        .where('id', customerId)
-        .preload('phoneNumber')
-        .preload('address')
-        .preload('sales', (salesQuery) => {
-          salesQuery
-            .preload('products', (productsQuery) => {
-              productsQuery.withTrashed()
-            })
-            .orderBy('created_at', 'desc')
-        })
-    }
-
-    return customer
-  }
-
   async show({ request, response }: HttpContext) {
     const {
       params: { customerId },
@@ -88,7 +25,24 @@ export default class CustomersController {
       year,
     } = await request.validateUsing(showCustomerValidator)
 
-    const customer = await this.filterByMonthOrYear(customerId, month, year)
+    const [customer] = await Customer.query()
+      .where('id', customerId)
+      .preload('phoneNumber')
+      .preload('address')
+      .preload('sales', (salesQuery) => {
+        if (month && year) {
+          salesQuery.whereRaw('MONTH(created_at) = ? AND YEAR(created_at) = ?', [month, year])
+        } else if (month) {
+          salesQuery.whereRaw('MONTH(created_at) = ?', [month])
+        } else if (year) {
+          salesQuery.whereRaw('YEAR(created_at) = ?', [year])
+        }
+        salesQuery
+          .preload('products', (productsQuery) => {
+            productsQuery.withTrashed()
+          })
+          .orderBy('created_at', 'desc')
+      })
 
     if (!customer)
       return response
