@@ -1,7 +1,7 @@
 import User from '#models/user'
 import { test } from '@japa/runner'
 import { StatusCodes } from 'http-status-codes'
-import { user, newUser } from '../data.js'
+import { user, createUser } from '../data_for_tests.js'
 import db from '@adonisjs/lucid/services/db'
 
 const baseUrl = '/api/login'
@@ -14,7 +14,7 @@ test.group('Users login', async (group) => {
   })
 
   test('should login user', async ({ client, assert }) => {
-    await User.create(newUser)
+    await createUser(client)
     const response = await client.post(baseUrl).json(user)
 
     const userDb = await User.findBy('email', user.email)
@@ -30,6 +30,7 @@ test.group('Users login', async (group) => {
     client,
     assert,
   }) => {
+    await createUser(client)
     const response = await client.post(baseUrl).json({ ...user, email: 'undefined' })
 
     response.assertStatus(StatusCodes.UNPROCESSABLE_ENTITY)
@@ -40,6 +41,7 @@ test.group('Users login', async (group) => {
     client,
     assert,
   }) => {
+    await createUser(client)
     const response = await client.post(baseUrl).json({ ...user, password: 'pass' })
 
     response.assertStatus(StatusCodes.UNPROCESSABLE_ENTITY)

@@ -1,7 +1,7 @@
 import User from '#models/user'
 import { test } from '@japa/runner'
 import { StatusCodes } from 'http-status-codes'
-import { newUser } from '../data.js'
+import { newUser } from '../data_for_tests.js'
 import db from '@adonisjs/lucid/services/db'
 
 const baseUrl = '/api/signup'
@@ -16,9 +16,9 @@ test.group('Users sign up', (group) => {
   test('should create a new user', async ({ client, assert }) => {
     const response = await client.post(baseUrl).json(newUser)
 
-    const newUserDb = await User.findBy('email', newUser.email)
+    const user = await User.findBy('email', newUser.email)
 
-    assert.isNotNull(newUserDb)
+    assert.isNotNull(user)
 
     response.assertStatus(StatusCodes.CREATED)
 
