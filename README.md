@@ -6,7 +6,7 @@ Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um si
 
 * [Pré-requisitos](#pré-requisitos)
 * [Instalação](#instalação)
-* [Postman para testar os endpoint](#postman-para-testar-os-endpoint)
+* [Testes](#testes)
 * [Users API Endpoints](#users-api-endpoints)
 * [Customers API Endpoints](#customers-api-endpoints)
 * [Products API Endpoints](#products-api-endpoints)
@@ -16,7 +16,7 @@ Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um si
 
 - Node.js
 - npm
-- MySQL
+- MySQL ou Docker
 
 # Instalação
 
@@ -53,15 +53,23 @@ Este é um projeto para o teste técnico Back-end da BeTalent. Trata-se de um si
 
 <br />
 
-4. Aplique as migrations e seeds:
+4. Se não possuir o MySQL instalado, crie o container de MySQL:
+   - `docker-compose up -d`
+
+6. Aplique as migrations e seeds:
    - `npm run migration`
    
-5. Inicie a aplicação:
+7. Inicie a aplicação:
    - `npm run dev`
    
 <br/>
 
-# Postman para testar os endpoint
+# Testes
+
+Para rodar os testes:
+- `npm run test`
+
+Postman para testar os endpoint:
   [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/33803535-11fc4bd7-a0e0-4988-9e17-a6e64184f9d9?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D33803535-11fc4bd7-a0e0-4988-9e17-a6e64184f9d9%26entityType%3Dcollection%26workspaceId%3D9745ea69-63ac-4434-9b67-07f8e68f8161)
   <br />
   
