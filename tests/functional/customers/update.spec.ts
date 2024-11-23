@@ -1,7 +1,13 @@
 import { test } from '@japa/runner'
 import { StatusCodes } from 'http-status-codes'
 import db from '@adonisjs/lucid/services/db'
-import { createCustomer, createUser, customer1, customer2, customerToUpdate } from '../data_for_tests.js'
+import {
+  createCustomer,
+  createUser,
+  customer1,
+  customer2,
+  customerToUpdate,
+} from '../data_for_tests.js'
 import PhoneNumber from '#models/phone_number'
 
 const baseUrl = '/api/customers/'

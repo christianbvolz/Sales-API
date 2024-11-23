@@ -39,7 +39,7 @@ export default class ProductsController {
       id: productId,
       title: product.title,
       description: product.description,
-      price: product.id,
+      price: product.price,
       quantity: product.quantity,
       image: product.image,
     })

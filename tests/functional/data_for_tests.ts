@@ -57,18 +57,18 @@ export const createProduct = async (product: NewProduct) => await Product.create
 export const createSale = async (sale: NewSale) => await Sale.create(sale)
 
 export const product1 = {
-  title: 'Console Sony Playstation 5 Ps5 825gb Mídia Física',
-  description: 'console PlayStation 5',
-  price: 3999.95,
-  quantity: 156,
-  image: 'p0ucedy52gad1engrnh40xnf.jpg',
-}
-
-export const product2 = {
   title: 'Mouse Gamer Razer Deathadder Essential 6400dpi Cor Preto',
   description: 'produto é usado.\n',
   price: 200.95,
   quantity: 33,
+  image: 'p0ucedy52gad1engrnh40xnf.jpg',
+}
+
+export const product2 = {
+  title: 'Console Sony Playstation 5 Ps5 825gb Mídia Física',
+  description: 'console PlayStation 5',
+  price: 3999.95,
+  quantity: 156,
   image: 'p0ucedy52gad1engrnh40xnf.jpg',
 }
 

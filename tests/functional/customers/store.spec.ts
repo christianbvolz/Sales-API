@@ -83,10 +83,8 @@ test.group('Customers store', (group) => {
 
     const customers = await Customer.all()
 
-    const empty = 0
-
     response.assertStatus(StatusCodes.UNAUTHORIZED)
 
-    assert.equal(customers.length, empty)
+    assert.empty(customers)
   })
 })
